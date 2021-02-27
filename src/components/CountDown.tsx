@@ -72,7 +72,7 @@ export function CountDown() {
               onClick={leaveCountdown}
             >
               Abandonar o ciclo
-              <CloseIcon fill={'red'} />
+              <CloseIcon />
             </button>
           ) : (
             <button
