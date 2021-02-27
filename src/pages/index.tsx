@@ -1,5 +1,5 @@
-import ExperienceBar from '../components/ExperienceBar'
-import Profile from '../components/Profile'
+import { ExperienceBar } from '../components/ExperienceBar'
+import { Profile } from '../components/Profile'
 
 import styles from '../styles/pages/Home.module.scss'
 

@@ -12,5 +12,3 @@ export function ExperienceBar() {
     </header>
   )
 }
-
-export default ExperienceBar
