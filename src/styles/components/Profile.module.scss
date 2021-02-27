@@ -1,0 +1,36 @@
+// Profile
+@use '../variables' as *;
+
+.container{
+  display: flex;
+  align-items: center;
+
+  div {
+    margin-left: 2rem;
+  }
+}
+
+.avatar {
+  width: 8.8rem;
+  height: 8.8rem;
+  border-radius: 50%;
+}
+
+.info {
+  strong {
+    color: $title;
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.6rem;
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 0.5rem;
+    }
+  }
+}

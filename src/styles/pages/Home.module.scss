@@ -6,4 +6,12 @@
   padding: 4rem 3.2rem;
   display: flex;
   flex-direction: column;
+  
+  section {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10rem;
+    align-content: center;
+  }
 }
