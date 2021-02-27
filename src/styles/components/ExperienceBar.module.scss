@@ -1,0 +1,32 @@
+// Expecience bar
+@use '../variables' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  
+  span {
+    font-size: 1.6rem;
+  }
+
+  > div {
+    flex: 1;
+    height: 4px;
+    border-radius: 4px;
+    background: $gray-line;
+    margin: 0 2rem;
+    position: relative;
+  }
+}
+
+.progress {
+  height: 4px;
+  border-radius: 4px;
+  background: $green;
+}
+
+.current {
+  position: absolute;
+  top: 12px;
+  transform: translateX(-50%);
+}
