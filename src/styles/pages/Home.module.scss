@@ -2,15 +2,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: 0 auto;
   max-width: 992px;
+  height: 100vh;
   padding: 4rem 3.2rem;
+  margin: 0 auto;
 
   section {
-    align-content: center;
     display: grid;
     flex: 1;
+    align-content: center;
     gap: 10rem;
     grid-template-columns: repeat(2, 1fr);
   }

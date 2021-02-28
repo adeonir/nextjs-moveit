@@ -1,10 +1,11 @@
 // Globals
-@use 'variables' as *;
+@use "variables" as *;
 
 :root {
   --white: #fff;
-  --hex-white: 255, 255, 255;
   --black: #111;
+  --hex-white: 255, 255, 255;
+  --hex-black: 0, 0, 0;
   --background: #f2f3f5;
   --gray-line: #dcdde0;
   --gray: #c1c2c6;
@@ -19,10 +20,10 @@
 }
 
 * {
+  padding: 0;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
 }
 
 *,
@@ -32,24 +33,24 @@
 }
 
 html {
-  font-size: 62.5%;
   min-width: 320px;
+  font-size: 62.5%;
 
-  @media(max-width: 1080px) {
+  @media (max-width: 1080px) {
     font-size: 56.25%;
   }
 
-  @media(max-width: 720px) {
+  @media (max-width: 720px) {
     font-size: 50%;
   }
 }
 
 body {
-  background: $background;
-  color: $text;
   font-family: $font-family;
   font-size: 1.6rem;
   font-weight: 400;
+  color: $text;
+  background: $background;
 }
 
 input,

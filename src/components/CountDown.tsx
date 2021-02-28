@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
 import styles from '../styles/components/CountDown.module.scss'
@@ -47,7 +47,7 @@ export function CountDown() {
     }
   }, [isActive, time, progressWidth])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (progressRef.current) {
       setProgressWidth(
         Number(window.getComputedStyle(progressRef.current).width.slice(0, -2)),
@@ -82,7 +82,7 @@ export function CountDown() {
           {isActive ? (
             <button
               type="button"
-              className={`${styles.button} ${styles.button_active}`}
+              className={`${styles.button} ${styles.buttonActive}`}
               onClick={leaveCountdown}
               ref={progressRef}
             >

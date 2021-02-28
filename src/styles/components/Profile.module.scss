@@ -1,11 +1,10 @@
 /* stylelint-disable max-nesting-depth */
+@use "../variables" as *;
 
 // Profile
-@use '../variables' as *;
-
 .container {
-  align-items: center;
   display: flex;
+  align-items: center;
 
   div {
     margin-left: 2rem;
@@ -13,27 +12,27 @@
 }
 
 .avatar {
+  width: 8.8rem;
+  height: 8.8rem;
   background: $gray-line;
   border-radius: 50%;
-  height: 8.8rem;
-  width: 8.8rem;
 }
 
 .info {
   strong {
-    color: $title;
     font-size: 2.4rem;
     font-weight: 600;
+    color: $title;
   }
 
   p {
-    align-items: center;
     display: flex;
+    align-items: center;
+    margin-top: .8rem;
     font-size: 1.6rem;
-    margin-top: 0.8rem;
 
     img {
-      margin-right: 0.5rem;
+      margin-right: .5rem;
     }
   }
 }

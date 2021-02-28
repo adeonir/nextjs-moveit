@@ -1,31 +1,31 @@
 /* stylelint-disable max-nesting-depth */
+/* stylelint-disable selector-class-pattern */
+@use "../variables" as *;
 
 // Countdown
-@use '../variables' as *;
-
 .container {
-  align-items: center;
-  color: $title;
   display: flex;
+  align-items: center;
   font-family: $font-family-alternative;
   font-weight: 600;
+  color: $title;
 
   > span {
+    margin: 0 .8rem;
     font-size: 12rem;
-    margin: 0 0.8rem;
   }
 }
 
 .numbers {
-  align-items: center;
-  background: $white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 6rem rgba($black, 0.5);
   display: flex;
   flex: 1;
-  font-size: 12rem;
+  align-items: center;
   justify-content: space-evenly;
+  font-size: 12rem;
   text-align: center;
+  background: $white;
+  border-radius: .5rem;
+  box-shadow: 0 0 3rem rgba($hex-black, .05);
 
   span {
     flex: 1;
@@ -41,21 +41,21 @@
 }
 
 .button {
-  align-items: center;
-  background: $blue;
-  border: 0;
-  border-radius: 0.5rem;
-  color: $white;
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8rem;
+  margin-top: 3.2rem;
   font-size: 2rem;
   font-weight: 600;
-  height: 8rem;
-  justify-content: center;
-  margin-top: 3.2rem;
+  color: $white;
+  background: $blue;
+  border: 0;
+  border-radius: .5rem;
   outline: 0;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-  width: 100%;
+  transition: all .2s ease-in-out;
 
   img,
   svg {
@@ -63,8 +63,8 @@
   }
 
   svg {
+    transition: all .2s ease-in-out;
     fill: $white;
-    transition: all 0.2s ease-in-out;
   }
 
   &:hover:not(:disabled) {
@@ -76,25 +76,24 @@
   }
 
   &:disabled {
-    background: rgba($hex-white, 0.6);
     color: $text;
     cursor: default;
+    background: rgba($hex-white, .6);
   }
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
-.button_active {
-  background: $white;
+.buttonActive {
   color: $title;
+  background: $white;
 
   svg {
+    transition: all .2s ease-in-out;
     fill: $title;
-    transition: all 0.2s ease-in-out;
   }
 
   &:hover:not(:disabled) {
-    background: $red;
     color: $white;
+    background: $red;
 
     svg {
       fill: $white;
@@ -106,24 +105,24 @@
   }
 
   &::before {
-    background: $gray-line;
-    border-radius: 0 0 0.5rem 0.5rem;
-    bottom: 0;
-    content: '';
-    height: 0.4rem;
-    left: 0;
     position: absolute;
     right: 0;
+    bottom: 0;
+    left: 0;
+    height: .4rem;
+    content: "";
+    background: $gray-line;
+    border-radius: 0 0 .5rem .5rem;
   }
 }
 
 .progress {
-  background: $green;
-  border-radius: 0 0 0.5rem 0.5rem;
-  bottom: 0;
-  height: 0.4rem;
-  left: 0;
   position: absolute;
   right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  height: .4rem;
+  background: $green;
+  border-radius: 0 0 .5rem .5rem;
 }

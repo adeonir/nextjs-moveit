@@ -1,28 +1,28 @@
-// Expecience bar
-@use '../variables' as *;
+@use "../variables" as *;
 
+// Expecience bar
 .container {
-  align-items: center;
   display: flex;
+  align-items: center;
 
   span {
     font-size: 1.6rem;
   }
 
   > div {
-    background: $gray-line;
-    border-radius: 4px;
+    position: relative;
     flex: 1;
     height: 4px;
     margin: 0 2rem;
-    position: relative;
+    background: $gray-line;
+    border-radius: 4px;
   }
 }
 
 .progress {
+  height: 4px;
   background: $green;
   border-radius: 4px;
-  height: 4px;
 }
 
 .current {

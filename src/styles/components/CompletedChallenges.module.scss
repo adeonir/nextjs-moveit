@@ -1,12 +1,12 @@
 // Completed challenges
 .container {
-  align-items: center;
-  border-bottom: 1px solid #d7d8da;
   display: flex;
-  font-weight: 500;
+  align-items: center;
   justify-content: space-between;
-  margin: 5.6rem 0;
   padding-bottom: 1.6rem;
+  margin: 5.6rem 0;
+  font-weight: 500;
+  border-bottom: 1px solid #d7d8da;
 
   span:first-child {
     font-size: 1.8rem;
