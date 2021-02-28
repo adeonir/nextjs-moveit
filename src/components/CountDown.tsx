@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-import styles from '../styles/components/CountDown.module.scss'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
+import styles from '../styles/components/CountDown.module.scss'
 
 let countdownTimeout: NodeJS.Timeout
 
@@ -33,7 +33,7 @@ export function CountDown() {
 
   useEffect(() => {
     if (isActive && time >= 0) {
-      setProgressBar(-(time - initialTime) * progressWidth / initialTime)
+      setProgressBar((-(time - initialTime) * progressWidth) / initialTime)
     }
 
     if (isActive && time > 0) {
@@ -45,11 +45,13 @@ export function CountDown() {
       setIsActive(false)
       setTime(initialTime)
     }
-  }, [isActive, time])
+  }, [isActive, time, progressWidth])
 
   useLayoutEffect(() => {
     if (progressRef.current) {
-      setProgressWidth(Number(window.getComputedStyle(progressRef.current).width.slice(0, -2)))
+      setProgressWidth(
+        Number(window.getComputedStyle(progressRef.current).width.slice(0, -2)),
+      )
     }
   }, [isActive])
 
@@ -70,10 +72,7 @@ export function CountDown() {
       </div>
 
       {hasFinish ? (
-        <button
-          className={styles.button}
-          disabled
-        >
+        <button className={styles.button} disabled>
           Ciclo encerrado
           <img src="icons/check.svg" alt="Arrow right" />
           <span className={styles.progress} />
@@ -89,7 +88,10 @@ export function CountDown() {
             >
               Abandonar o ciclo
               <CloseIcon />
-              <span className={styles.progress} style={{ width: `${progressBar}px` }} />
+              <span
+                className={styles.progress}
+                style={{ width: `${progressBar}px` }}
+              />
             </button>
           ) : (
             <button

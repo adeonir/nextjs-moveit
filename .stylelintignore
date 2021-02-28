@@ -1,0 +1,10 @@
+node_modules/
+assets/images
+*.css
+*.map
+*.php
+*.png
+*.json
+*.txt
+LICENSE
+README.md

@@ -2,27 +2,27 @@
 @use '../variables' as *;
 
 .container {
-  display: flex;
   align-items: center;
-  
+  display: flex;
+
   span {
     font-size: 1.6rem;
   }
 
   > div {
+    background: $gray-line;
+    border-radius: 4px;
     flex: 1;
     height: 4px;
-    border-radius: 4px;
-    background: $gray-line;
     margin: 0 2rem;
     position: relative;
   }
 }
 
 .progress {
-  height: 4px;
-  border-radius: 4px;
   background: $green;
+  border-radius: 4px;
+  height: 4px;
 }
 
 .current {

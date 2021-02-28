@@ -1,12 +1,14 @@
+/* stylelint-disable max-nesting-depth */
+
 // Countdown
 @use '../variables' as *;
 
 .container {
-  display: flex;
   align-items: center;
+  color: $title;
+  display: flex;
   font-family: $font-family-alternative;
   font-weight: 600;
-  color: $title;
 
   > span {
     font-size: 12rem;
@@ -15,14 +17,14 @@
 }
 
 .numbers {
-  flex: 1;
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
   background: $white;
-  box-shadow: 0 0 6rem rgba($black, .5);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 6rem rgba($black, 0.5);
+  display: flex;
+  flex: 1;
   font-size: 12rem;
+  justify-content: space-evenly;
   text-align: center;
 
   span {
@@ -39,21 +41,21 @@
 }
 
 .button {
-  width: 100%;
-  height: 8rem;
-  margin-top: 3.2rem;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  border: 0;
-  outline: 0;
-  border-radius: .5rem;
   background: $blue;
+  border: 0;
+  border-radius: 0.5rem;
   color: $white;
+  display: flex;
   font-size: 2rem;
   font-weight: 600;
-  transition: all .2s ease-in-out;
+  height: 8rem;
+  justify-content: center;
+  margin-top: 3.2rem;
+  outline: 0;
   position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
 
   img,
   svg {
@@ -62,7 +64,7 @@
 
   svg {
     fill: $white;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   &:hover:not(:disabled) {
@@ -74,19 +76,20 @@
   }
 
   &:disabled {
-    background: rgba($hex-white, .6);
+    background: rgba($hex-white, 0.6);
     color: $text;
     cursor: default;
   }
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .button_active {
   background: $white;
   color: $title;
 
   svg {
     fill: $title;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   &:hover:not(:disabled) {
@@ -101,26 +104,26 @@
   &:active {
     background: $gray;
   }
-  
+
   &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 0.4rem;
-    border-radius: 0 0 .5rem .5rem;
     background: $gray-line;
+    border-radius: 0 0 0.5rem 0.5rem;
+    bottom: 0;
+    content: '';
+    height: 0.4rem;
+    left: 0;
+    position: absolute;
+    right: 0;
   }
 }
 
 .progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0.4rem;
-  border-radius: 0 0 .5rem .5rem;
   background: $green;
+  border-radius: 0 0 0.5rem 0.5rem;
+  bottom: 0;
+  height: 0.4rem;
+  left: 0;
+  position: absolute;
+  right: 0;
   width: 100%;
 }
