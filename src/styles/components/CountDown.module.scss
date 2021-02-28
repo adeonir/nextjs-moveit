@@ -53,6 +53,7 @@
   font-size: 2rem;
   font-weight: 600;
   transition: all .2s ease-in-out;
+  position: relative;
 
   img,
   svg {
@@ -100,4 +101,26 @@
   &:active {
     background: $gray;
   }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.4rem;
+    border-radius: 0 0 .5rem .5rem;
+    background: $gray-line;
+  }
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.4rem;
+  border-radius: 0 0 .5rem .5rem;
+  background: $green;
+  width: 100%;
 }

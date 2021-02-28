@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import styles from '../styles/components/CountDown.module.scss'
 
 import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
@@ -6,10 +6,14 @@ import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
 let countdownTimeout: NodeJS.Timeout
 
 export function CountDown() {
-  const initialTime = 0.1 * 60
+  const initialTime = 10
   const [time, setTime] = useState(initialTime)
   const [isActive, setIsActive] = useState(false)
   const [hasFinish, setHasFinish] = useState(false)
+
+  const progressRef = useRef(null)
+  const [progressWidth, setProgressWidth] = useState(0)
+  const [progressBar, setProgressBar] = useState(0)
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -28,6 +32,10 @@ export function CountDown() {
   }
 
   useEffect(() => {
+    if (isActive && time >= 0) {
+      setProgressBar(-(time - initialTime) * progressWidth / initialTime)
+    }
+
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1)
@@ -38,6 +46,12 @@ export function CountDown() {
       setTime(initialTime)
     }
   }, [isActive, time])
+
+  useLayoutEffect(() => {
+    if (progressRef.current) {
+      setProgressWidth(Number(window.getComputedStyle(progressRef.current).width.slice(0, -2)))
+    }
+  }, [isActive])
 
   return (
     <>
@@ -62,6 +76,7 @@ export function CountDown() {
         >
           Ciclo encerrado
           <img src="icons/check.svg" alt="Arrow right" />
+          <span className={styles.progress} />
         </button>
       ) : (
         <>
@@ -70,9 +85,11 @@ export function CountDown() {
               type="button"
               className={`${styles.button} ${styles.button_active}`}
               onClick={leaveCountdown}
+              ref={progressRef}
             >
               Abandonar o ciclo
               <CloseIcon />
+              <span className={styles.progress} style={{ width: `${progressBar}px` }} />
             </button>
           ) : (
             <button
