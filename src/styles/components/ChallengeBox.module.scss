@@ -103,17 +103,21 @@
     border-radius: .5rem;
     outline: 0;
     transition: all .2s ease-in-out;
-
-    &:hover {
-      filter: brightness(.9);
-    }
   }
 
   &Danger {
     background: $red;
+
+    &:hover {
+      background: $red-dark;
+    }
   }
 
   &Success {
     background: $green;
+
+    &:hover {
+      background: $green-dark;
+    }
   }
 }
