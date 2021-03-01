@@ -11,6 +11,7 @@ type ContextProps = {
   levelUp: () => void
   newChallenge: () => void
   resetChallenge: () => void
+  completeChallenge: () => void
 }
 
 type ProviderProps = {
@@ -48,6 +49,23 @@ export function ChallengesProvider({ children }: ProviderProps) {
     setActiveChallenge(null)
   }
 
+  function completeChallenge() {
+    if (!activeChallenge) return
+
+    const { amount } = activeChallenge
+
+    let finalExperience = currentExperience + amount
+
+    if (finalExperience >= nextExperience) {
+      finalExperience = finalExperience - nextExperience
+      levelUp()
+    }
+
+    setActiveChallenge(null)
+    setCurrentExperience(finalExperience)
+    setChallengesCompleted(challengesCompleted + 1)
+  }
+
   return (
     <ChallengesContext.Provider
       value={{
@@ -59,6 +77,7 @@ export function ChallengesProvider({ children }: ProviderProps) {
         levelUp,
         newChallenge,
         resetChallenge,
+        completeChallenge,
       }}
     >
       {children}
