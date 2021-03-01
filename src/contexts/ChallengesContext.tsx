@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { createContext, ReactNode, useState } from 'react'
+import Cookie from 'js-cookie'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 
 import challengesList from '../../challenges.json'
@@ -19,6 +20,9 @@ type ContextProps = {
 
 type ProviderProps = {
   children: ReactNode
+  level: number
+  currentExperience: number
+  challengesCompleted: number
 }
 
 type Challenge = {
@@ -29,14 +33,24 @@ type Challenge = {
 
 export const ChallengesContext = createContext({} as ContextProps)
 
-export function ChallengesProvider({ children }: ProviderProps) {
-  const [level, setLevel] = useState(1)
-  const [currentExperience, setCurrentExperience] = useState(0)
-  const [challengesCompleted, setChallengesCompleted] = useState(0)
+export function ChallengesProvider({ children, ...rest }: ProviderProps) {
+  const [level, setLevel] = useState(rest.level ?? 1)
+  const [currentExperience, setCurrentExperience] = useState(
+    rest.currentExperience ?? 0,
+  )
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0,
+  )
 
   const [activeChallenge, setActiveChallenge] = useState(null)
 
   const nextExperience = Math.pow((level + 1) * 4, 2)
+
+  useEffect(() => {
+    Cookie.set('level', String(level))
+    Cookie.set('currentExperience', String(currentExperience))
+    Cookie.set('challengesCompleted', String(challengesCompleted))
+  }, [level, currentExperience, challengesCompleted])
 
   function levelUp() {
     setLevel(level + 1)
