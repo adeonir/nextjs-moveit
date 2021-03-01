@@ -9,7 +9,7 @@ let countdownTimeout: NodeJS.Timeout
 export function CountDown() {
   const { newChallenge } = useContext(ChallengesContext)
 
-  const initialTime = 10
+  const initialTime = 5
   const [time, setTime] = useState(initialTime)
   const [isActive, setIsActive] = useState(false)
   const [hasFinish, setHasFinish] = useState(false)
