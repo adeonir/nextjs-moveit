@@ -1,4 +1,7 @@
+import 'react-toastify/dist/ReactToastify.css'
+
 import { createContext, ReactNode, useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 
 import challengesList from '../../challenges.json'
 
@@ -42,7 +45,20 @@ export function ChallengesProvider({ children }: ProviderProps) {
   function newChallenge() {
     const randomChallenge = Math.floor(Math.random() * challengesList.length)
     const challenge = challengesList[randomChallenge]
+
     setActiveChallenge(challenge)
+
+    new Audio('/notification.mp3').play()
+
+    toast.info(`Valendo ${challenge.amount}xp`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    })
   }
 
   function resetChallenge() {
@@ -67,20 +83,23 @@ export function ChallengesProvider({ children }: ProviderProps) {
   }
 
   return (
-    <ChallengesContext.Provider
-      value={{
-        level,
-        currentExperience,
-        nextExperience,
-        challengesCompleted,
-        activeChallenge,
-        levelUp,
-        newChallenge,
-        resetChallenge,
-        completeChallenge,
-      }}
-    >
-      {children}
-    </ChallengesContext.Provider>
+    <>
+      <ToastContainer />
+      <ChallengesContext.Provider
+        value={{
+          level,
+          currentExperience,
+          nextExperience,
+          challengesCompleted,
+          activeChallenge,
+          levelUp,
+          newChallenge,
+          resetChallenge,
+          completeChallenge,
+        }}
+      >
+        {children}
+      </ChallengesContext.Provider>
+    </>
   )
 }
