@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
+import { ChallengesContext } from '../contexts/ChallengesContext'
 import styles from '../styles/components/CountDown.module.scss'
 
 let countdownTimeout: NodeJS.Timeout
 
 export function CountDown() {
+  const { newChallenge } = useContext(ChallengesContext)
+
   const initialTime = 10
   const [time, setTime] = useState(initialTime)
   const [isActive, setIsActive] = useState(false)
@@ -44,8 +47,9 @@ export function CountDown() {
       setHasFinish(true)
       setIsActive(false)
       setTime(initialTime)
+      newChallenge()
     }
-  }, [isActive, time, progressWidth])
+  }, [isActive, time, progressWidth, newChallenge])
 
   useEffect(() => {
     if (progressRef.current) {
