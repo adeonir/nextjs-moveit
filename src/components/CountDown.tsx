@@ -1,55 +1,33 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
 import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
-import { ChallengesContext } from '../contexts/ChallengesContext'
-import styles from '../styles/components/CountDown.module.scss'
+import { CountdownContext } from '../contexts/CountdownContext'
+import styles from '../styles/components/Countdown.module.scss'
 
-let countdownTimeout: NodeJS.Timeout
+export function Countdown() {
+  const {
+    minutes,
+    seconds,
+    time,
+    initialTime,
+    hasFinish,
+    isActive,
+    startCountdown,
+    resetCountdown,
+  } = useContext(CountdownContext)
 
-export function CountDown() {
-  const { newChallenge } = useContext(ChallengesContext)
-
-  const initialTime = 5
-  const [time, setTime] = useState(initialTime)
-  const [isActive, setIsActive] = useState(false)
-  const [hasFinish, setHasFinish] = useState(false)
+  const [minuteTen, minuteUnit] = String(minutes).padStart(2, '0').split('')
+  const [secondTen, secondUnit] = String(seconds).padStart(2, '0').split('')
 
   const progressRef = useRef(null)
   const [progressWidth, setProgressWidth] = useState(0)
   const [progressBar, setProgressBar] = useState(0)
 
-  const minutes = Math.floor(time / 60)
-  const seconds = time % 60
-
-  const [minuteTen, minuteUnit] = String(minutes).padStart(2, '0').split('')
-  const [secondTen, secondUnit] = String(seconds).padStart(2, '0').split('')
-
-  const startCountdown = () => {
-    setIsActive(true)
-  }
-
-  const leaveCountdown = () => {
-    clearTimeout(countdownTimeout)
-    setIsActive(false)
-    setTime(initialTime)
-  }
-
   useEffect(() => {
     if (isActive && time >= 0) {
       setProgressBar((-(time - initialTime) * progressWidth) / initialTime)
     }
-
-    if (isActive && time > 0) {
-      countdownTimeout = setTimeout(() => {
-        setTime(time - 1)
-      }, 1000)
-    } else if (isActive && time === 0) {
-      setHasFinish(true)
-      setIsActive(false)
-      setTime(initialTime)
-      newChallenge()
-    }
-  }, [isActive, time, progressWidth, newChallenge])
+  }, [progressWidth, isActive, time, initialTime])
 
   useEffect(() => {
     if (progressRef.current) {
@@ -87,7 +65,7 @@ export function CountDown() {
             <button
               type="button"
               className={`${styles.button} ${styles.buttonActive}`}
-              onClick={leaveCountdown}
+              onClick={resetCountdown}
               ref={progressRef}
             >
               Abandonar o ciclo
