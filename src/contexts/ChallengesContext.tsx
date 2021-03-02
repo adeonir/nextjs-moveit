@@ -5,6 +5,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 
 import challengesList from '../../challenges.json'
+import { LevelUpModal } from '../components/LevelUpModal'
 
 type ContextProps = {
   level: number
@@ -13,6 +14,7 @@ type ContextProps = {
   challengesCompleted: number
   activeChallenge: Challenge
   levelUp: () => void
+  closeModal: () => void
   newChallenge: () => void
   resetChallenge: () => void
   completeChallenge: () => void
@@ -43,6 +45,7 @@ export function ChallengesProvider({ children, ...rest }: ProviderProps) {
   )
 
   const [activeChallenge, setActiveChallenge] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const nextExperience = Math.pow((level + 1) * 4, 2)
 
@@ -54,6 +57,11 @@ export function ChallengesProvider({ children, ...rest }: ProviderProps) {
 
   function levelUp() {
     setLevel(level + 1)
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
   }
 
   function newChallenge() {
@@ -107,11 +115,14 @@ export function ChallengesProvider({ children, ...rest }: ProviderProps) {
           challengesCompleted,
           activeChallenge,
           levelUp,
+          closeModal,
           newChallenge,
           resetChallenge,
           completeChallenge,
         }}
       >
+        {isModalOpen && <LevelUpModal />}
+
         {children}
       </ChallengesContext.Provider>
     </>
