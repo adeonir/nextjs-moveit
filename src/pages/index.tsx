@@ -47,7 +47,7 @@ export default function Home(props: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { level, currentExperience, challengesCompleted } = ctx.req.cookies
 
   return {

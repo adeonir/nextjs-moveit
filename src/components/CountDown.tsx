@@ -32,7 +32,7 @@ export function Countdown() {
   useEffect(() => {
     if (progressRef.current) {
       setProgressWidth(
-        Number(window.getComputedStyle(progressRef.current).width.slice(0, -2)),
+        Number(window.getComputedStyle(progressRef.current).width.slice(0, -2))
       )
     }
   }, [isActive])
