@@ -51,7 +51,6 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/first": "error",
-    "import/order": "off",
     "no-console": [
       2,
       {
