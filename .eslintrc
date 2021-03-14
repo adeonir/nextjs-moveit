@@ -27,7 +27,6 @@
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "simple-import-sort",
     "import"
   ],
   "rules": {
@@ -40,6 +39,7 @@
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/camelcase": "off",
     "import/prefer-default-export": "off",
+    "import/no-unresolved" : "off",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-one-expression-per-line": "off",
@@ -48,9 +48,26 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "import/first": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"]],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+//          "caseInsensitive": true
+        }
+      }
+    ],
     "no-console": [
       2,
       {

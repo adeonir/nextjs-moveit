@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
-import { ReactComponent as CloseIcon } from '../assets/images/close.svg'
-import { CountdownContext } from '../contexts/CountdownContext'
-import styles from '../styles/components/Countdown.module.scss'
+import { ReactComponent as CloseIcon } from 'assets/images/close.svg'
+import { CountdownContext } from 'contexts/CountdownContext'
+import styles from 'styles/components/Countdown.module.scss'
 
 export function Countdown() {
   const {

@@ -1,11 +1,11 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import Cookie from 'js-cookie'
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 
-import challengesList from '../../challenges.json'
-import { LevelUpModal } from '../components/LevelUpModal'
+import challengesList from 'assets/challenges.json'
+import { LevelUpModal } from 'components/LevelUpModal'
+import Cookie from 'js-cookie'
+import { ToastContainer, toast } from 'react-toastify'
 
 type ContextProps = {
   level: number
